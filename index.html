@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .sim {
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      margin-right: 80px;
+    }
+
+    .nao {
+      background-color: red;
+      color: white;
+      position: absolute;
+      margin-left: 80px;
+    }
+
+    .frase {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="frase">Cuzinho sexta??</div>
+  <div class="container">
+    <a href="https://www.youtube.com/watch?v=thJ0sUR_sWg" class="btn sim">Sim</a>
+    <button class="btn nao">Não</button>
+  </div>
+
+  <script>
+    const naoBtn = document.querySelector('.nao');
+
+    document.addEventListener('mousemove', moveNao);
+
+    function moveNao(event) {
+      if (event.target.classList.contains('nao')) {
+        const newX = Math.random() * window.innerWidth;
+        const newY = Math.random() * window.innerHeight;
+        naoBtn.style.left = newX + 'px';
+        naoBtn.style.top = newY + 'px';
+      }
+    }
+  </script>
+</body>
+</html>
