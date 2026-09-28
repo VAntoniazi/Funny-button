@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ops</title>
+  <title>Convite para o cinema</title>
   <style>
     body, html {
       height: 100%;
@@ -53,22 +53,30 @@
   <div class="frase">Cineminha sexta??</div>
   <div class="container">
     <a href="https://www.youtube.com/watch?v=thJ0sUR_sWg" class="btn sim">Sim</a>
-    <button class="btn nao">Não</button>
+    <button class="btn nao" type="button">Não</button>
   </div>
 
   <script>
     const naoBtn = document.querySelector('.nao');
+    const viewportPadding = 8;
 
-    document.addEventListener('mousemove', moveNao);
+    function moveNao() {
+      const rect = naoBtn.getBoundingClientRect();
+      const maxX = Math.max(viewportPadding, window.innerWidth - rect.width - viewportPadding);
+      const maxY = Math.max(viewportPadding, window.innerHeight - rect.height - viewportPadding);
 
-    function moveNao(event) {
-      if (event.target.classList.contains('nao')) {
-        const newX = Math.random() * window.innerWidth;
-        const newY = Math.random() * window.innerHeight;
-        naoBtn.style.left = newX + 'px';
-        naoBtn.style.top = newY + 'px';
-      }
+      const newX = viewportPadding + Math.random() * Math.max(0, maxX - viewportPadding);
+      const newY = viewportPadding + Math.random() * Math.max(0, maxY - viewportPadding);
+
+      naoBtn.style.left = newX + 'px';
+      naoBtn.style.top = newY + 'px';
     }
+
+    naoBtn.addEventListener('pointerenter', moveNao);
+    naoBtn.addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      moveNao();
+    }, { passive: false });
   </script>
 </body>
 </html>
