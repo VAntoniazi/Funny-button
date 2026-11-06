@@ -1,20 +1,27 @@
 # Accessibility
 
-Funny-button is a playful interaction experiment, but the page should still remain understandable and operable across common input methods.
+Funny Button is an intentionally playful experiment, not a recommended UI pattern for important decisions.
 
-## Current considerations
+## Implemented
 
-- the document declares `pt-BR` as its language;
-- the affirmative action is a native hyperlink;
-- the negative action remains a native button element;
-- touch input is handled explicitly;
-- the moving button is constrained to the visible viewport;
-- the page does not depend on animation libraries or scripted page transitions.
+- The document declares Brazilian Portuguese (pt-BR).
+- Native hyperlink and button controls remain focusable via keyboard.
+- Visible keyboard-focus styling is provided.
+- The "Não" button is evasive for pointer and touch interaction but responds to keyboard activation with a status message.
+- The status message uses a live region.
+- Viewport-constrained placement avoids losing the moved button offscreen after resize.
+- Reduced-motion preferences disable nonessential transitions.
+- Input targets are sized for touch use.
 
-## Known limitation
+## Intentional limitation
 
-The intentionally evasive negative button is hostile by design to direct activation. That behavior is the point of the experiment, so this repository should not be used as a pattern for consequential forms, consent interfaces, accessibility-critical workflows or production decision controls.
+Making a choice hard to select is not appropriate for consent, forms, purchases, account settings, or accessibility-critical interactions. Avoid reusing the evasive behavior in those contexts.
 
-## Testing
+## Manual testing checklist
 
-When changing the interaction, verify the page at narrow and wide viewport sizes and test pointer, touch and keyboard behavior separately.
+- Desktop mouse or trackpad: the button moves and remains onscreen.
+- Touch: the button moves without activating unexpectedly.
+- Keyboard: Tab reaches each control, and Enter/Space can activate the native button.
+- Zoom and narrow screens: content and controls remain readable.
+- Screen reader: the prompt, controls, and status make sense.
+- Reduced motion: no unnecessary visual transition is required.

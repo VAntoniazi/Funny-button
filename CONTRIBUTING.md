@@ -1,20 +1,19 @@
 # Contributing
 
-Thanks for improving Funny-button.
+Thanks for improving Funny Button.
 
 ## Development
 
-The project is intentionally dependency-free. Open `index.html` directly in a modern browser and test changes with both pointer and touch interactions.
+This is a lightweight static project with no build or runtime dependencies. Make focused changes in index.html and keep the interface useful on small and large screens. Do not add libraries unless there is a clear benefit.
 
-## Pull requests
+## Validate a change
 
-Keep changes focused and explain the user-visible behavior being changed. For interaction changes, verify:
+1. Run node --test tests/*.test.mjs (Node.js 22+ recommended).
+2. Open index.html locally and check mouse/trackpad behavior.
+3. Check touch interaction, keyboard focus, and the affirmative link.
+4. Check that the moving button stays visible after viewport changes.
+5. Update README or docs when behavior changes.
 
-- the “Não” button remains inside the viewport;
-- keyboard and touch users are not blocked from the page;
-- the “Sim” action remains a normal link;
-- the page still works without a build step.
+Small, descriptive commits are preferred, for example: fix: keep evasive button inside viewport.
 
-## Commit style
-
-Use concise imperative commit messages such as `fix: keep button inside viewport` or `docs: clarify local usage`.
+main is the only permanent branch; if a short-lived branch is needed for collaboration, merge it and delete it afterward.

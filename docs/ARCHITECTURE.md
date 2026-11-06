@@ -1,20 +1,21 @@
 # Architecture
 
-Funny-button is deliberately small: the runtime is a single static document with HTML, CSS and JavaScript.
+Funny Button is a dependency-free static browser experiment. The runtime lives in index.html, with semantic HTML, embedded CSS, and plain JavaScript.
 
 ## Interaction model
 
-The page exposes two choices. The affirmative choice is a normal hyperlink. The negative button listens for pointer entry and touch input, calculates its own rendered dimensions, then chooses a new position constrained by the current viewport.
+The affirmative choice is a normal hyperlink (to an external YouTube video). The negative choice is a native button that moves when approached with a mouse or tapped on a touch display. Positions are calculated from the visible viewport and actual button dimensions; the button is clamped after viewport resizes.
 
-## Design constraints
+Keyboard users can focus and activate either native control. Activating the negative button produces a small live-region message rather than forcing a navigation.
 
-- no framework or package runtime;
-- no backend or persistent state;
-- no network dependency for the interaction itself;
-- touch and pointer input supported;
-- viewport bounds calculated at interaction time;
-- source remains readable without a build process.
+## Constraints
 
-## Automation
+- no framework, package manager, build tooling, backend, or local storage;
+- no runtime network requests before a user opens a link;
+- support narrow viewports, pointer input, touch input, and keyboard use;
+- respect reduced-motion preferences;
+- keep the code readable and reviewable.
 
-GitHub Actions is used only for repository maintenance and validation. Automation is not required to run the page.
+## Validation
+
+Tests in tests/interaction.test.mjs use the built-in Node.js test runner and a minimal DOM stub. CI validates the markup contract and key interaction behavior on pushes to main and pull requests. Manual visual checks remain valuable for different browsers and touch devices.
