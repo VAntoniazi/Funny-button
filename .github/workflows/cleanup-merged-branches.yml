@@ -9,7 +9,8 @@ permissions:
 
 jobs:
   cleanup:
-    if: github.event.head_commit.message == 'chore: remove merged work branches'
+    if: >-
+      github.event.head_commit.message == 'chore: remove merged work branches'
     runs-on: ubuntu-latest
     steps:
       - name: Delete verified, already-merged branch heads
